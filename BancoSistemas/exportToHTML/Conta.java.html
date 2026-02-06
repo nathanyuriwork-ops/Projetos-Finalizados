@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>Conta.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Conta.java</font>
+</center></td></tr></table>
+<pre><span class="s0">public class </span><span class="s1">Conta </span><span class="s2">{</span>
+
+    <span class="s0">private int </span><span class="s1">numeroConta</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">String titular</span><span class="s2">;</span>
+    <span class="s0">private double </span><span class="s1">saldo</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">Conta</span><span class="s2">(</span><span class="s0">int </span><span class="s1">numeroConta</span><span class="s2">, </span><span class="s1">String titular</span><span class="s2">){</span>
+
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">numeroConta </span><span class="s2">= </span><span class="s1">numeroConta</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">titular </span><span class="s2">= </span><span class="s1">titular</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">saldo </span><span class="s2">= </span><span class="s3">0.0</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public int </span><span class="s1">getNumeroConta</span><span class="s2">(){</span>
+        <span class="s0">return </span><span class="s1">numeroConta</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">String getTitular</span><span class="s2">(){</span>
+        <span class="s0">return </span><span class="s1">titular</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public double </span><span class="s1">getSaldo</span><span class="s2">(){</span>
+        <span class="s0">return </span><span class="s1">saldo</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">depositar</span><span class="s2">(</span><span class="s0">double </span><span class="s1">valor</span><span class="s2">){</span>
+        <span class="s0">if</span><span class="s2">(</span><span class="s1">valor </span><span class="s2">&gt; </span><span class="s3">0</span><span class="s2">){</span>
+            <span class="s1">saldo </span><span class="s2">+= </span><span class="s1">valor</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else</span><span class="s2">{</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Valor inválido&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public boolean </span><span class="s1">sacar</span><span class="s2">(</span><span class="s0">double </span><span class="s1">valor</span><span class="s2">){</span>
+        <span class="s0">if</span><span class="s2">(</span><span class="s1">valor </span><span class="s2">&gt; </span><span class="s3">0 </span><span class="s2">&amp;&amp; </span><span class="s1">valor </span><span class="s2">&lt;= </span><span class="s1">saldo</span><span class="s2">){</span>
+            <span class="s1">saldo </span><span class="s2">-= </span><span class="s1">valor</span><span class="s2">;</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Saque realizado com sucesso&quot;</span><span class="s2">);</span>
+            <span class="s0">return true</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else</span><span class="s2">{</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Saldo insuficiente ou valor inválido&quot;</span><span class="s2">);</span>
+            <span class="s0">return false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public boolean </span><span class="s1">transferir</span><span class="s2">(</span><span class="s0">double </span><span class="s1">valor</span><span class="s2">, </span><span class="s1">Conta destino</span><span class="s2">){</span>
+        <span class="s0">if</span><span class="s2">(</span><span class="s1">destino </span><span class="s2">== </span><span class="s0">null</span><span class="s2">){</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Conta de destino inválida&quot;</span><span class="s2">);</span>
+            <span class="s0">return false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+
+        <span class="s0">else if</span><span class="s2">(</span><span class="s1">valor </span><span class="s2">&lt;= </span><span class="s3">0</span><span class="s2">){</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Valor inválido&quot;</span><span class="s2">);</span>
+            <span class="s0">return false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+
+        <span class="s0">else if</span><span class="s2">(</span><span class="s1">valor </span><span class="s2">&gt; </span><span class="s1">saldo</span><span class="s2">){</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Saldo insuficiente&quot;</span><span class="s2">);</span>
+            <span class="s0">return false</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else </span><span class="s2">{</span>
+            <span class="s0">this</span><span class="s2">.</span><span class="s1">saldo </span><span class="s2">-= </span><span class="s1">valor</span><span class="s2">;</span>
+            <span class="s1">destino</span><span class="s2">.</span><span class="s1">depositar</span><span class="s2">(</span><span class="s1">valor</span><span class="s2">);</span>
+
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Transferência realizada com sucesso.&quot;</span><span class="s2">);</span>
+            <span class="s0">return true</span><span class="s2">;</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>FfmpegService.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+FfmpegService.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">nathanyuri</span><span class="s2">.</span><span class="s1">audio</span><span class="s2">.</span><span class="s1">service</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">nathanyuri</span><span class="s2">.</span><span class="s1">audio</span><span class="s2">.</span><span class="s1">model</span><span class="s2">.</span><span class="s1">ConversionRequest</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">nathanyuri</span><span class="s2">.</span><span class="s1">audio</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">FfmpegUtils</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">io</span><span class="s2">.</span><span class="s1">IOException</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Arrays</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">List</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">FfmpegService </span><span class="s2">{</span>
+
+    <span class="s0">public void </span><span class="s1">convert</span><span class="s2">(</span><span class="s1">ConversionRequest request</span><span class="s2">) {</span>
+
+        <span class="s0">double </span><span class="s1">ratio </span><span class="s2">= </span><span class="s1">request</span><span class="s2">.</span><span class="s1">getTargetHz</span><span class="s2">()</span>
+                <span class="s2">/ </span><span class="s1">request</span><span class="s2">.</span><span class="s1">getOriginalHz</span><span class="s2">();</span>
+
+        <span class="s0">double </span><span class="s1">gainDb </span><span class="s2">= </span><span class="s1">request</span><span class="s2">.</span><span class="s1">getGainDb</span><span class="s2">(); </span><span class="s3">// ex: +3.0</span>
+
+        <span class="s1">String filter </span><span class="s2">= </span><span class="s1">String</span><span class="s2">.</span><span class="s1">format</span><span class="s2">(</span>
+                <span class="s4">&quot;aresample=96000,&quot; </span><span class="s2">+</span>
+                        <span class="s4">&quot;rubberband=pitch=%.10f:tempo=1.0:formant=1:transients=crisp:window=long,&quot; </span><span class="s2">+</span>
+                        <span class="s4">&quot;volume=%.1fdB,&quot; </span><span class="s2">+</span>
+                        <span class="s4">&quot;aresample=48000&quot;</span><span class="s2">,</span>
+                <span class="s1">ratio</span><span class="s2">,</span>
+                <span class="s1">gainDb</span>
+        <span class="s2">);</span>
+
+
+        <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">String</span><span class="s2">&gt; </span><span class="s1">command </span><span class="s2">= </span><span class="s1">Arrays</span><span class="s2">.</span><span class="s1">asList</span><span class="s2">(</span>
+                <span class="s4">&quot;ffmpeg&quot;</span><span class="s2">,</span>
+                <span class="s4">&quot;-y&quot;</span><span class="s2">,</span>
+                <span class="s4">&quot;-i&quot;</span><span class="s2">, </span><span class="s1">request</span><span class="s2">.</span><span class="s1">getInputPath</span><span class="s2">(),</span>
+                <span class="s4">&quot;-af&quot;</span><span class="s2">, </span><span class="s1">filter</span><span class="s2">,</span>
+                <span class="s4">&quot;-acodec&quot;</span><span class="s2">, </span><span class="s4">&quot;pcm_f32le&quot;</span><span class="s2">,</span>
+                <span class="s1">request</span><span class="s2">.</span><span class="s1">getOutputPath</span><span class="s2">()</span>
+        <span class="s2">);</span>
+
+
+        <span class="s1">ProcessBuilder processBuilder </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ProcessBuilder</span><span class="s2">(</span><span class="s1">command</span><span class="s2">);</span>
+        <span class="s1">processBuilder</span><span class="s2">.</span><span class="s1">inheritIO</span><span class="s2">();</span>
+
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">Process process </span><span class="s2">= </span><span class="s1">processBuilder</span><span class="s2">.</span><span class="s1">start</span><span class="s2">();</span>
+            <span class="s0">int </span><span class="s1">exitCode </span><span class="s2">= </span><span class="s1">process</span><span class="s2">.</span><span class="s1">waitFor</span><span class="s2">();</span>
+
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">exitCode </span><span class="s2">!= </span><span class="s5">0</span><span class="s2">) {</span>
+                <span class="s0">throw new </span><span class="s1">RuntimeException</span><span class="s2">(</span><span class="s4">&quot;Erro ao executar FFmpeg. Código: &quot; </span><span class="s2">+ </span><span class="s1">exitCode</span><span class="s2">);</span>
+            <span class="s2">}</span>
+
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">IOException </span><span class="s2">| </span><span class="s1">InterruptedException e</span><span class="s2">) {</span>
+            <span class="s0">throw new </span><span class="s1">RuntimeException</span><span class="s2">(</span><span class="s4">&quot;Falha na conversão de áudio&quot;</span><span class="s2">, </span><span class="s1">e</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<html>
+<head>
+<title>AfinacaoIntervaloUnico.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #2aacb8;}
+.s5 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+AfinacaoIntervaloUnico.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.*;</span>
+
+<span class="s0">public class </span><span class="s1">AfinacaoIntervaloUnico </span><span class="s2">{</span>
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+
+        <span class="s1">Scanner scanner </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Scanner</span><span class="s2">(</span><span class="s1">System</span><span class="s2">.</span><span class="s1">in</span><span class="s2">);</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Digite uma frequência fundamental (ex: 440): &quot;</span><span class="s2">);</span>
+        <span class="s0">double </span><span class="s1">a4 </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextDouble</span><span class="s2">();</span>
+
+        <span class="s0">if</span><span class="s2">(</span><span class="s1">a4 </span><span class="s2">&lt;= </span><span class="s4">50</span><span class="s2">){</span>
+            <span class="s1">a4 </span><span class="s2">*= </span><span class="s4">2</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else if</span><span class="s2">(</span><span class="s1">a4 </span><span class="s2">&gt;= </span><span class="s4">120 </span><span class="s2">&amp;&amp; </span><span class="s1">a4 </span><span class="s2">&lt;= </span><span class="s4">220</span><span class="s2">){</span>
+            <span class="s1">a4 </span><span class="s2">/= </span><span class="s4">2</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else if</span><span class="s2">(</span><span class="s1">a4 </span><span class="s2">&gt;= </span><span class="s4">221 </span><span class="s2">&amp;&amp; </span><span class="s1">a4 </span><span class="s2">&lt;= </span><span class="s4">460</span><span class="s2">){</span>
+            <span class="s1">a4 </span><span class="s2">/= </span><span class="s4">4</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else if</span><span class="s2">(</span><span class="s1">a4 </span><span class="s2">&gt;= </span><span class="s4">461 </span><span class="s2">&amp;&amp; </span><span class="s1">a4 </span><span class="s2">&lt;= </span><span class="s4">880</span><span class="s2">){</span>
+            <span class="s1">a4 </span><span class="s2">/= </span><span class="s4">8</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s0">else if</span><span class="s2">(</span><span class="s1">a4 </span><span class="s2">&gt;= </span><span class="s4">881 </span><span class="s2">&amp;&amp; </span><span class="s1">a4 </span><span class="s2">&lt;= </span><span class="s4">1760</span><span class="s2">){</span>
+            <span class="s1">a4 </span><span class="s2">/= </span><span class="s4">16</span><span class="s2">;</span>
+        <span class="s2">}</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Digite um numerador: &quot;</span><span class="s2">);</span>
+        <span class="s0">int </span><span class="s1">numerador </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">();</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s3">&quot;Digite um denominador: &quot;</span><span class="s2">);</span>
+        <span class="s0">int </span><span class="s1">denominador </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">();</span>
+
+        <span class="s0">double </span><span class="s1">frequencia </span><span class="s2">= </span><span class="s1">a4</span><span class="s2">;</span>
+
+        <span class="s5">// Ordem FIXA das notas</span>
+        <span class="s1">String</span><span class="s2">[] </span><span class="s1">ordemNotas </span><span class="s2">= {</span>
+                <span class="s3">&quot;A&quot;</span><span class="s2">, </span><span class="s3">&quot;A#&quot;</span><span class="s2">, </span><span class="s3">&quot;B&quot;</span><span class="s2">, </span><span class="s3">&quot;C&quot;</span><span class="s2">, </span><span class="s3">&quot;C#&quot;</span><span class="s2">, </span><span class="s3">&quot;D&quot;</span><span class="s2">, </span><span class="s3">&quot;D#&quot;</span><span class="s2">, </span><span class="s3">&quot;E&quot;</span><span class="s2">, </span><span class="s3">&quot;F&quot;</span><span class="s2">, </span><span class="s3">&quot;F#&quot;</span><span class="s2">, </span><span class="s3">&quot;G&quot;</span><span class="s2">, </span><span class="s3">&quot;G#&quot;</span>
+        <span class="s2">};</span>
+
+        <span class="s5">// Map final</span>
+        <span class="s1">Map</span><span class="s2">&lt;</span><span class="s1">String</span><span class="s2">, </span><span class="s1">Double</span><span class="s2">&gt; </span><span class="s1">notas </span><span class="s2">= </span><span class="s0">new </span><span class="s1">HashMap</span><span class="s2">&lt;&gt;();</span>
+
+        <span class="s5">// Lista só de frequências (para ordenar)</span>
+        <span class="s1">List</span><span class="s2">&lt;</span><span class="s1">Double</span><span class="s2">&gt; </span><span class="s1">frequencias </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;&gt;();</span>
+
+        <span class="s5">// ===== GERA AS FREQUÊNCIAS =====</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s4">12</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">i </span><span class="s2">&gt; </span><span class="s4">0</span><span class="s2">) {</span>
+                <span class="s1">frequencia </span><span class="s2">= </span><span class="s1">frequencia </span><span class="s2">* </span><span class="s1">numerador </span><span class="s2">/ </span><span class="s1">denominador</span><span class="s2">; </span><span class="s5">// sua lógica original</span>
+            <span class="s2">}</span>
+
+            <span class="s0">while </span><span class="s2">(</span><span class="s1">frequencia </span><span class="s2">&gt;= </span><span class="s1">a4 </span><span class="s2">* </span><span class="s4">2</span><span class="s2">) {</span>
+                <span class="s1">frequencia </span><span class="s2">/= </span><span class="s4">2.0</span><span class="s2">;</span>
+            <span class="s2">}</span>
+            <span class="s0">while </span><span class="s2">(</span><span class="s1">frequencia </span><span class="s2">&lt; </span><span class="s1">a4</span><span class="s2">) {</span>
+                <span class="s1">frequencia </span><span class="s2">*= </span><span class="s4">2.0</span><span class="s2">;</span>
+            <span class="s2">}</span>
+
+            <span class="s1">frequencias</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">frequencia</span><span class="s2">);</span>
+        <span class="s2">}</span>
+
+        <span class="s5">// ===== ORDENA DO MENOR PARA O MAIOR =====</span>
+        <span class="s1">Collections</span><span class="s2">.</span><span class="s1">sort</span><span class="s2">(</span><span class="s1">frequencias</span><span class="s2">);</span>
+
+        <span class="s5">// ===== ATRIBUI NA ORDEM FIXA DE NOTAS =====</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s4">12</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
+            <span class="s1">notas</span><span class="s2">.</span><span class="s1">put</span><span class="s2">(</span><span class="s1">ordemNotas</span><span class="s2">[</span><span class="s1">i</span><span class="s2">], </span><span class="s1">frequencias</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">i</span><span class="s2">));</span>
+        <span class="s2">}</span>
+
+        <span class="s5">// ===== MOSTRAR NA ORDEM FIXA =====</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">Notas ordenadas:</span><span class="s0">\n</span><span class="s3">&quot;</span><span class="s2">);</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s1">String nota </span><span class="s2">: </span><span class="s1">ordemNotas</span><span class="s2">) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">printf</span><span class="s2">(</span><span class="s3">&quot;%s = %.3f Hz</span><span class="s0">\n</span><span class="s3">&quot;</span><span class="s2">, </span><span class="s1">nota</span><span class="s2">, </span><span class="s1">notas</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">nota</span><span class="s2">));</span>
+        <span class="s2">}</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;-----------------&quot;</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Afinação violão: &quot;</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;-----------------&quot;</span><span class="s2">);</span>
+
+        <span class="s5">// ===== AFINAÇÃO PADRÃO BASEADA NA SUA ESCALA GERADA =====</span>
+        <span class="s1">Map</span><span class="s2">&lt;</span><span class="s1">String</span><span class="s2">, </span><span class="s1">Double</span><span class="s2">&gt; </span><span class="s1">afinacaoGuitarra </span><span class="s2">= </span><span class="s0">new </span><span class="s1">LinkedHashMap</span><span class="s2">&lt;&gt;();</span>
+
+        <span class="s1">afinacaoGuitarra</span><span class="s2">.</span><span class="s1">put</span><span class="s2">(</span><span class="s3">&quot;E2&quot;</span><span class="s2">, </span><span class="s1">notas</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">&quot;E&quot;</span><span class="s2">) / </span><span class="s4">2</span><span class="s2">);</span>
+        <span class="s1">afinacaoGuitarra</span><span class="s2">.</span><span class="s1">put</span><span class="s2">(</span><span class="s3">&quot;A2&quot;</span><span class="s2">, </span><span class="s1">notas</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">&quot;A&quot;</span><span class="s2">));</span>
+        <span class="s1">afinacaoGuitarra</span><span class="s2">.</span><span class="s1">put</span><span class="s2">(</span><span class="s3">&quot;D3&quot;</span><span class="s2">, </span><span class="s1">notas</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">&quot;D&quot;</span><span class="s2">));</span>
+        <span class="s1">afinacaoGuitarra</span><span class="s2">.</span><span class="s1">put</span><span class="s2">(</span><span class="s3">&quot;G3&quot;</span><span class="s2">, </span><span class="s1">notas</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">&quot;G&quot;</span><span class="s2">));</span>
+        <span class="s1">afinacaoGuitarra</span><span class="s2">.</span><span class="s1">put</span><span class="s2">(</span><span class="s3">&quot;B3&quot;</span><span class="s2">, </span><span class="s1">notas</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">&quot;B&quot;</span><span class="s2">) * </span><span class="s4">2</span><span class="s2">);</span>
+        <span class="s1">afinacaoGuitarra</span><span class="s2">.</span><span class="s1">put</span><span class="s2">(</span><span class="s3">&quot;E4&quot;</span><span class="s2">, </span><span class="s1">notas</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">&quot;E&quot;</span><span class="s2">) * </span><span class="s4">2</span><span class="s2">); </span><span class="s5">// oitava acima</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s0">\n</span><span class="s3">Afinação de violão/guitarra baseada na sua escala:&quot;</span><span class="s2">);</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s1">var e </span><span class="s2">: </span><span class="s1">afinacaoGuitarra</span><span class="s2">.</span><span class="s1">entrySet</span><span class="s2">()) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">printf</span><span class="s2">(</span><span class="s3">&quot;%s = %.6f Hz</span><span class="s0">\n</span><span class="s3">&quot;</span><span class="s2">, </span><span class="s1">e</span><span class="s2">.</span><span class="s1">getKey</span><span class="s2">(), </span><span class="s1">e</span><span class="s2">.</span><span class="s1">getValue</span><span class="s2">());</span>
+        <span class="s2">}</span>
+
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

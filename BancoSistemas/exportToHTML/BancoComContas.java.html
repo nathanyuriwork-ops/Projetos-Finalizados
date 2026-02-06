@@ -1,0 +1,167 @@
+<html>
+<head>
+<title>BancoComContas.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+.s4 { color: #6aab73;}
+.s5 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+BancoComContas.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">ArrayList</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Scanner</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">BancoComContas </span><span class="s2">{</span>
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">){</span>
+
+        <span class="s1">Scanner scanner </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Scanner</span><span class="s2">(</span><span class="s1">System</span><span class="s2">.</span><span class="s1">in</span><span class="s2">);</span>
+        <span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Conta</span><span class="s2">&gt; </span><span class="s1">contas </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;&gt;();</span>
+
+        <span class="s0">boolean </span><span class="s1">executando </span><span class="s2">= </span><span class="s0">true</span><span class="s2">;</span>
+        <span class="s0">int </span><span class="s1">proximoNumero </span><span class="s2">= </span><span class="s3">1</span><span class="s2">;</span>
+
+        <span class="s0">while</span><span class="s2">(</span><span class="s1">executando</span><span class="s2">){</span>
+
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">=========== Banco ===========&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;1. Criar conta&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;2. Listar contas&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;3. Depositar&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;4. Sacar&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;5. Transferir&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;6. Sair&quot;</span><span class="s2">);</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Escolha uma opção: &quot;</span><span class="s2">);</span>
+
+            <span class="s0">int </span><span class="s1">opcao </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">();</span>
+            <span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+
+            <span class="s0">switch</span><span class="s2">(</span><span class="s1">opcao</span><span class="s2">){</span>
+
+                <span class="s0">case </span><span class="s3">1</span><span class="s2">:</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Nome do titular: &quot;</span><span class="s2">);</span>
+                    <span class="s1">String nome </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextLine</span><span class="s2">();</span>
+
+                    <span class="s1">Conta novaConta </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Conta</span><span class="s2">(</span><span class="s1">proximoNumero</span><span class="s2">, </span><span class="s1">nome</span><span class="s2">);</span>
+                    <span class="s1">contas</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">novaConta</span><span class="s2">);</span>
+
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Conta criada com sucesso. Conta número: &quot; </span><span class="s2">+ </span><span class="s1">proximoNumero</span><span class="s2">);</span>
+                    <span class="s1">proximoNumero</span><span class="s2">++;</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+
+                <span class="s0">case </span><span class="s3">2</span><span class="s2">:</span>
+                  <span class="s0">if</span><span class="s2">(</span><span class="s1">contas</span><span class="s2">.</span><span class="s1">isEmpty</span><span class="s2">()){</span>
+                      <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Nenhuma conta cadastrada&quot;</span><span class="s2">);</span>
+                      <span class="s0">break</span><span class="s2">;</span>
+                  <span class="s2">}</span>
+                  <span class="s0">else</span><span class="s2">{</span>
+                      <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">();</span>
+                      <span class="s0">for</span><span class="s2">(</span><span class="s1">Conta conta </span><span class="s2">: </span><span class="s1">contas</span><span class="s2">){</span>
+                          <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">printf</span><span class="s2">(</span><span class="s4">&quot;Conta %d | Titular %s | Saldo $%.2f%n&quot;</span><span class="s2">,</span>
+                                            <span class="s1">conta</span><span class="s2">.</span><span class="s1">getNumeroConta</span><span class="s2">(), </span><span class="s1">conta</span><span class="s2">.</span><span class="s1">getTitular</span><span class="s2">(), </span><span class="s1">conta</span><span class="s2">.</span><span class="s1">getSaldo</span><span class="s2">());</span>
+                      <span class="s2">}</span>
+                  <span class="s2">}</span>
+                  <span class="s0">break</span><span class="s2">;</span>
+
+                <span class="s0">case </span><span class="s3">3</span><span class="s2">:</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Número da conta: &quot;</span><span class="s2">);</span>
+                    <span class="s0">int </span><span class="s1">numDep </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">();</span>
+
+                    <span class="s1">Conta contaDep </span><span class="s2">= </span><span class="s1">buscarConta</span><span class="s2">(</span><span class="s1">contas</span><span class="s2">, </span><span class="s1">numDep</span><span class="s2">);</span>
+
+                    <span class="s0">if</span><span class="s2">(</span><span class="s1">contaDep </span><span class="s2">!= </span><span class="s0">null</span><span class="s2">){</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Valor do depósito: &quot;</span><span class="s2">);</span>
+                        <span class="s0">double </span><span class="s1">valor </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextDouble</span><span class="s2">();</span>
+                        <span class="s1">contaDep</span><span class="s2">.</span><span class="s1">depositar</span><span class="s2">(</span><span class="s1">valor</span><span class="s2">);</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Depósito realizado com sucesso.&quot;</span><span class="s2">);</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">Saldo após depósito: &quot;</span><span class="s2">);</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">printf</span><span class="s2">(</span><span class="s4">&quot;Conta (%s) - Saldo: $%.2f%n&quot;</span><span class="s2">, </span><span class="s1">contaDep</span><span class="s2">.</span><span class="s1">getTitular</span><span class="s2">(), </span><span class="s1">contaDep</span><span class="s2">.</span><span class="s1">getSaldo</span><span class="s2">());</span>
+                    <span class="s2">}</span>
+                    <span class="s0">else</span><span class="s2">{</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Conta não encontrada&quot;</span><span class="s2">);</span>
+                    <span class="s2">}</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+
+                <span class="s0">case </span><span class="s3">4</span><span class="s2">:</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Número da conta: &quot;</span><span class="s2">);</span>
+                    <span class="s0">int </span><span class="s1">numSaq </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">();</span>
+
+                    <span class="s1">Conta contaSaq </span><span class="s2">= </span><span class="s1">buscarConta</span><span class="s2">(</span><span class="s1">contas</span><span class="s2">, </span><span class="s1">numSaq</span><span class="s2">);</span>
+
+                    <span class="s0">if</span><span class="s2">(</span><span class="s1">contaSaq </span><span class="s2">!= </span><span class="s0">null</span><span class="s2">){</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Valor do saque: &quot;</span><span class="s2">);</span>
+                        <span class="s0">double </span><span class="s1">valor </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextDouble</span><span class="s2">();</span>
+                        <span class="s1">contaSaq</span><span class="s2">.</span><span class="s1">sacar</span><span class="s2">(</span><span class="s1">valor</span><span class="s2">);</span>
+                    <span class="s2">}</span>
+                    <span class="s0">else</span><span class="s2">{</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Conta não encontrada&quot;</span><span class="s2">);</span>
+                    <span class="s2">}</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+
+                <span class="s0">case </span><span class="s3">5</span><span class="s2">:</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Conta de origem: &quot;</span><span class="s2">);</span>
+                    <span class="s0">int </span><span class="s1">origemNum </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">();</span>
+
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Conta de destino: &quot;</span><span class="s2">);</span>
+                    <span class="s0">int </span><span class="s1">destinoNum </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextInt</span><span class="s2">();</span>
+
+                    <span class="s1">Conta origem </span><span class="s2">= </span><span class="s1">buscarConta</span><span class="s2">(</span><span class="s1">contas</span><span class="s2">, </span><span class="s1">origemNum</span><span class="s2">);</span>
+                    <span class="s1">Conta destino </span><span class="s2">= </span><span class="s1">buscarConta</span><span class="s2">(</span><span class="s1">contas</span><span class="s2">, </span><span class="s1">destinoNum</span><span class="s2">);</span>
+
+                    <span class="s0">if</span><span class="s2">(</span><span class="s1">origem </span><span class="s2">== </span><span class="s1">destino</span><span class="s2">){</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Não é possivel transferir para a mesma conta.&quot;</span><span class="s2">);</span>
+                        <span class="s0">break</span><span class="s2">;</span>
+                    <span class="s2">}</span>
+
+                    <span class="s0">if</span><span class="s2">(</span><span class="s1">origem </span><span class="s2">== </span><span class="s0">null </span><span class="s2">|| </span><span class="s1">destino </span><span class="s2">== </span><span class="s0">null</span><span class="s2">){</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Conta de destino ou origem não encontrada&quot;</span><span class="s2">);</span>
+                        <span class="s0">break</span><span class="s2">;</span>
+                    <span class="s2">}</span>
+                    <span class="s0">else</span><span class="s2">{</span>
+                        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">print</span><span class="s2">(</span><span class="s4">&quot;Valor da transferência: &quot;</span><span class="s2">);</span>
+                        <span class="s0">double </span><span class="s1">valor </span><span class="s2">= </span><span class="s1">scanner</span><span class="s2">.</span><span class="s1">nextDouble</span><span class="s2">();</span>
+
+                        <span class="s5">// realiza a transferência</span>
+                        <span class="s0">boolean </span><span class="s1">transferido </span><span class="s2">= </span><span class="s1">origem</span><span class="s2">.</span><span class="s1">transferir</span><span class="s2">(</span><span class="s1">valor</span><span class="s2">, </span><span class="s1">destino</span><span class="s2">);</span>
+
+                        <span class="s0">if</span><span class="s2">(</span><span class="s1">transferido</span><span class="s2">){</span>
+                            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">Saldo após a transferência: &quot;</span><span class="s2">);</span>
+                            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">printf</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">Conta de origem (%s) - Saldo: %.2f%n&quot;</span><span class="s2">, </span><span class="s1">origem</span><span class="s2">.</span><span class="s1">getTitular</span><span class="s2">(), </span><span class="s1">origem</span><span class="s2">.</span><span class="s1">getSaldo</span><span class="s2">());</span>
+                            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">printf</span><span class="s2">(</span><span class="s4">&quot;Conta de destino (%s) - Saldo: %.2f%n&quot;</span><span class="s2">, </span><span class="s1">destino</span><span class="s2">.</span><span class="s1">getTitular</span><span class="s2">(), </span><span class="s1">destino</span><span class="s2">.</span><span class="s1">getSaldo</span><span class="s2">());</span>
+                        <span class="s2">}</span>
+                        <span class="s0">break</span><span class="s2">;</span>
+                    <span class="s2">}</span>
+
+                <span class="s0">case </span><span class="s3">6</span><span class="s2">:</span>
+                    <span class="s1">executando </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Encerrando sistema...&quot;</span><span class="s2">);</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+
+                <span class="s0">default</span><span class="s2">:</span>
+                    <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s4">&quot;Opção inválida&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+
+        <span class="s1">scanner</span><span class="s2">.</span><span class="s1">close</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s5">// método auxiliar</span>
+    <span class="s0">public static </span><span class="s1">Conta buscarConta</span><span class="s2">(</span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Conta</span><span class="s2">&gt; </span><span class="s1">contas</span><span class="s2">, </span><span class="s0">int </span><span class="s1">numeroConta</span><span class="s2">){</span>
+        <span class="s0">for</span><span class="s2">(</span><span class="s1">Conta conta </span><span class="s2">: </span><span class="s1">contas</span><span class="s2">){</span>
+            <span class="s0">if</span><span class="s2">(</span><span class="s1">conta</span><span class="s2">.</span><span class="s1">getNumeroConta</span><span class="s2">() == </span><span class="s1">numeroConta</span><span class="s2">){</span>
+                <span class="s0">return </span><span class="s1">conta</span><span class="s2">;</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+        <span class="s0">return null</span><span class="s2">;</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
